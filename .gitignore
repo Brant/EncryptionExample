@@ -1,0 +1,7 @@
+/PrivateKey.txt
+/PublicKey.txt
+encrypted.txt
+env/
+bin/
+obj/
+*.suo
