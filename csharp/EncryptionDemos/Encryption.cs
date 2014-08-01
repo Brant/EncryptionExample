@@ -5,13 +5,14 @@ using System.Text;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace EncryptionDemos
 {
     class Encryption
     {
         // This is the base path of this demo, outside both C# and Python areas
-        private static string basePath = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString()).ToString()).ToString();
+        private static string basePath = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetParent(GetWorkingDirectory()).ToString()).ToString()).ToString()).ToString();
 
         // These are for generating new keys in the "basePath" area
         private static string generatedPrivateKeyPath = Path.Combine(basePath, "PrivateKey.txt");
@@ -22,7 +23,16 @@ namespace EncryptionDemos
 
         // This is the actual private key that will be used for decryption
         // The file itself will NOT be automatically overwritten when generating keys
-        private static string privateKeyPath = Path.Combine(Environment.CurrentDirectory, "PrivateKey.txt");
+        private static string privateKeyPath = Path.Combine(GetWorkingDirectory(), "PrivateKey.txt");
+
+
+        public static string GetWorkingDirectory()
+        {
+            string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+            UriBuilder uri = new UriBuilder(codeBase);
+            string path = Uri.UnescapeDataString(uri.Path);
+            return Path.GetDirectoryName(path);
+        }
 
 
         static void DecryptString()
