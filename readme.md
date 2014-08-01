@@ -34,3 +34,19 @@ That will generate a file outside the python and c# areas called *encrypted.txt*
 2. Choose option 2
 
 That should show you the original string from the encrypt.py script ("hello there!" is the default)
+
+## Generating New Keys
+The project comes with sample keys but if you want to create new ones, you can do so.
+
+### Create initial keys
+The keys are initially created in C#:
+
+1. From visual studio, run the project
+2. Choose option 1
+
+### Put keys into the right places
+That will create a *PrivateKey.txt* and *PublicKey.txt* at the root of this repository (outside both the Python and C# areas).
+
+The *PrivateKey.txt* can be copied directly into the `./csharp/EncryptionDemos` directory.
+
+For python, the `PublicKey.txt` string needs to be converted into PEM format. You can use [this utility from SuperDry Developer](https://superdry.apphb.com/tools/online-rsa-key-converter) to do that conversion. Once you  have it, paste it into `./python/publickey.pem`.
