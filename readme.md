@@ -19,7 +19,7 @@ pip install -r requirements.txt
 ```
 
 ### 2. C# Setup
-Just open `./csharp/EncryptionDemos.sln` in Visual Studio 2010 or later
+Just open `./csharp/EncryptionDemos/EncryptionDemos.sln` in Visual Studio 2010 or later
 
 ### 3. Encrypt string with Python
 ```
